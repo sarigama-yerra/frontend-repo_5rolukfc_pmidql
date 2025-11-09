@@ -7,7 +7,7 @@ function Line({ children }) {
   return <div className="font-mono text-sm md:text-base leading-relaxed text-zinc-100">{children}</div>
 }
 
-export default function Terminal({ onNavigate }) {
+export default function Terminal({ onNavigate, onKeySignal }) {
   const [history, setHistory] = useState([
     'Welcome to the interactive terminal. Type "help" to get started.'
   ])
@@ -37,6 +37,8 @@ export default function Terminal({ onNavigate }) {
   }
 
   const handleKey = (e) => {
+    const key = e.key
+    onKeySignal?.(key)
     if (e.key === 'Enter') {
       runCommand(input)
       setInput('')
@@ -44,9 +46,9 @@ export default function Terminal({ onNavigate }) {
   }
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-black via-zinc-900 to-black">
+    <section className="relative py-10 md:py-20 bg-gradient-to-b from-black via-zinc-900 to-black">
       <div className="max-w-4xl mx-auto px-6">
-        <motion.h2 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-white text-3xl font-semibold mb-6">Interactive Terminal</motion.h2>
+        <motion.h2 initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="text-white text-2xl md:text-3xl font-semibold mb-6">Interactive Terminal</motion.h2>
         <div className="rounded-xl border border-white/10 bg-zinc-900/80 backdrop-blur p-4 md:p-6 shadow-2xl">
           <div className="flex items-center gap-1 mb-4">
             <span className="w-3 h-3 rounded-full bg-red-500/80" />
