@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 const ROWS = [
   ['esc','1','2','3','4','5','6','7','8','9','0','-','=', 'backspace'],
   ['tab','q','w','e','r','t','y','u','i','o','p','[',']','\\'],
-  ['caps','a','s','d','f','g','h','j','k','l',';','"'".slice(0,1),'enter'],
+  ['caps','a','s','d','f','g','h','j','k','l',';','\'','enter'],
   ['shift','z','x','c','v','b','n','m',',','.','/','shift'],
   ['ctrl','win','alt','space','alt','fn','menu','ctrl']
 ]
@@ -34,7 +34,7 @@ function Key({ active, children, wide }) {
     >
       <span className="pointer-events-none" style={{ color: active ? 'var(--accent)' : undefined }}>{children}</span>
       {active && (
-        <span className="absolute inset-0 rounded-md -z-[1] blur-xl opacity-60" style={{ background: 'var(--accent)' }} />
+        <span className="absolute inset-0 rounded-md blur-xl opacity-60" style={{ background: 'var(--accent)' }} />
       )}
     </motion.div>
   )
